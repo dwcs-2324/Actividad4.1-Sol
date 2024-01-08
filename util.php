@@ -26,7 +26,7 @@ function find_user_by_email(String $email): array|false{
         $pdostmt->bindParam("email", $email);
 
         $pdostmt->execute();
-        $pdostmt->debugDumpParams();
+        //$pdostmt->debugDumpParams();
         //fetch devuelve false en caso de error o si no hay más registros que procesar
         $user = $pdostmt->fetch(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
