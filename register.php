@@ -17,7 +17,7 @@
     require_once "util.php";
     ?>
     <div class="container-fluid">
-        <h1>Registro de usuario</h1>
+        <h1 class="text-center">Registro de usuario</h1>
 
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-6">

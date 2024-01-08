@@ -17,7 +17,7 @@
     require_once "util.php";
     ?>
     <div class="container-fluid">
-        <h1>Inicio de sesión</h1>
+        <h1 class="text-center">Inicio de sesión</h1>
 
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-6">
@@ -40,6 +40,8 @@
                     <!-- Submit button -->
                     <input type="submit" class="btn btn-primary btn-block mb-4" value="Iniciar sesión"></button>
 
+                    <a href="register.php" class="btn btn-secondary btn-block mb-4"  role="button"
+                        aria-disabled="true">Regístrese aquí</a>
 
                 </form>
 
