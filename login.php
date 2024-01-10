@@ -63,6 +63,7 @@
             } else {
                 if (password_verify($pwd, $usuario["pwdhash"])) {
                     show_message("Enhorabuena, se ha autenticado con éxito", "success");
+                    print_r($usuario["roles"]);
                 } else {
                     show_message("No se ha encontrado un usuario y/o contraseña coincidentes", "danger");
                 }

@@ -29,6 +29,14 @@ function find_user_by_email(String $email): array|false{
         //$pdostmt->debugDumpParams();
         //fetch devuelve false en caso de error o si no hay más registros que procesar
         $user = $pdostmt->fetch(PDO::FETCH_ASSOC);
+
+        if($user!==false){
+            $pdostmt_roles = $conProyecto->prepare("SELECT idRol, name FROM usuario_rol ur INNER JOIN rol r ON ur.idRol = r.id  WHERE idUsuario =:user_id");
+            $pdostmt_roles->bindParam("user_id", $user["id"]);
+            $pdostmt_roles->execute();
+            $roles_array = $pdostmt_roles->fetchAll(PDO::FETCH_ASSOC);
+            $user["roles"] = $roles_array;
+        }
     } catch (Exception $e) {
         echo "Ha ocurrido una excepción: " . $e->getMessage();
     }
