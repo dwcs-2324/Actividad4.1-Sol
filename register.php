@@ -62,7 +62,7 @@
 
                     <!-- Submit button -->
                     <input type="submit" class="btn btn-primary btn-block mb-4" value="Registrar usuario"></button>
-
+                    <p><a class="link-opacity-100" href="login.php">Login</a></p>
 
                 </form>
 
