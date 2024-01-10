@@ -31,7 +31,12 @@ function find_user_by_email(String $email): array|false{
         $user = $pdostmt->fetch(PDO::FETCH_ASSOC);
 
         if($user!==false){
-            $pdostmt_roles = $conProyecto->prepare("SELECT idRol, name FROM usuario_rol ur INNER JOIN rol r ON ur.idRol = r.id  WHERE idUsuario =:user_id");
+            $pdostmt_roles = 
+            $conProyecto->prepare("SELECT ur.idRol, r.name 
+            FROM usuario_rol  ur 
+            INNER JOIN rol r 
+            ON ur.idRol = r.id  
+            WHERE idUsuario =:user_id");
             $pdostmt_roles->bindParam("user_id", $user["id"]);
             $pdostmt_roles->execute();
             $roles_array = $pdostmt_roles->fetchAll(PDO::FETCH_ASSOC);
@@ -70,6 +75,7 @@ function create_user(String $email, String $pwd_hash, int $rol_id): ?int{
         $conProyecto->commit();
 
     } catch (Exception $e) {
+        $user_id = null;
         echo "Ha ocurrido una excepción en la creación: " . $e->getMessage();
         $conProyecto->rollBack();
     }
